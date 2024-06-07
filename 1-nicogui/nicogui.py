@@ -209,7 +209,7 @@ for k in controls:
     window[k].bind('<ButtonRelease-1>', ' Release')
     window[k].bind('<ButtonPress-1>', ' Press')
 window.bind("<minus>", "Current-")
-window.bind("<+>", "Current+")
+window.bind("<plus>", "Current+")
 window.bind("<Alt-s>", "Current-")
 window.bind("<Alt-a>", "Current+")
 
@@ -347,7 +347,7 @@ try:
                     current = k
                     newValue = None
         elif 'Current' in event:
-            print('current',event)
+            #print('current',event)
             diff = -1.0 if event[-1] == '-' else 1.0
             if newValue is None:
                 newValue = values[current]
