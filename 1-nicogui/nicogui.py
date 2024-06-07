@@ -209,7 +209,7 @@ for k in controls:
     window[k].bind('<ButtonRelease-1>', ' Release')
     window[k].bind('<ButtonPress-1>', ' Press')
 window.bind("<minus>", "Current-")
-window.bind("<plus>", "Current+")
+window.bind("<Key-+>", "Current+")
 window.bind("<Alt-s>", "Current-")
 window.bind("<Alt-a>", "Current+")
 
