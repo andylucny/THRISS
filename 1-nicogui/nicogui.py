@@ -208,8 +208,10 @@ for k in dofs:
 for k in controls: 
     window[k].bind('<ButtonRelease-1>', ' Release')
     window[k].bind('<ButtonPress-1>', ' Press')
-window.bind("<Key-->", "Current-")
-window.bind("<Key-+>", "Current+")
+window.bind("<minus>", "Current-")
+window.bind("<+>", "Current+")
+window.bind("<Alt-s>", "Current-")
+window.bind("<Alt-a>", "Current+")
 
 for k in dofs:
     robot.enableTorque(k)
