@@ -7,6 +7,7 @@ import requests
 import zipfile
 import io
 import subprocess
+import platform
 
 def download(path,url):
     if os.path.exists(path):
@@ -19,16 +20,20 @@ def download(path,url):
         zipfile_object.extractall(".")
 
 def initializeCameraControls():
-    download("v4l2-ctl.exe","https://www.agentspace.org/download/v4l2-ctl.zip")  
+    if platform.system() == "Windows":
+        download("v4l2-ctl.exe","https://www.agentspace.org/download/v4l2-ctl.zip")  
 
 def getCameraControls(id,controls):
     command = [ "v4l2-ctl", "-d", f"/dev/video{id}" ]
     for control in controls:
         command += [ "-C", f"{control}" ]
-    data = subprocess.check_output(command)
-    output = data.decode()
-    values = output.split('\r\n')
-    return [ int(value) for value in values[:-1] ]
+    try:
+        data = subprocess.check_output(command)
+        output = data.decode()
+        values = output.split('\r\n')
+        return [ int(value) for value in values[:-1] ]
+    except:
+        return [ 100 if 'zoom' in control else 0 for control in controls ] 
     
 def setCameraControls(id,controls):
     command = [ "v4l2-ctl", "-d", f"/dev/video{id}" ]
