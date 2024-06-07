@@ -208,7 +208,7 @@ for k in dofs:
 for k in controls: 
     window[k].bind('<ButtonRelease-1>', ' Release')
     window[k].bind('<ButtonPress-1>', ' Press')
-window.bind("<minus>", "Current-")
+window.bind("<Key-minus>", "Current-")
 window.bind("<Key-plus>", "Current+")
 window.bind("<Alt-s>", "Current-")
 window.bind("<Alt-a>", "Current+")
