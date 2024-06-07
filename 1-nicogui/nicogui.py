@@ -1,7 +1,6 @@
 import time
 import time
 import os
-import requests
 import io
 import signal
 import PySimpleGUI as sg
@@ -10,6 +9,7 @@ import numpy as np
 import chime ; chime.theme('zelda')
 try:
     from nicomotion.Motion import Motion
+    import requests
 
     def download_config(path,url):
         if os.path.exists(path):
