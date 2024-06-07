@@ -4,3 +4,8 @@ pip install opencv-contrib-python
 pip install chime
 pip install yourdfpy
 pip install "pyglet<2"
+
+pip install onnxruntime-gpu 
+# or pip install onnxruntime
+pip install ftfy
+
