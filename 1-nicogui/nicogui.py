@@ -345,6 +345,7 @@ try:
                     current = k
                     newValue = None
         elif 'Current' in event:
+            print('current',event)
             diff = -1.0 if event[-1] == '-' else 1.0
             if newValue is None:
                 newValue = values[current]
