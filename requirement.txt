@@ -1,0 +1,6 @@
+pip install requests
+pip install PySimpleGUI==4.60.5
+pip install opencv-contrib-python
+pip install chime
+pip install yourdfpy
+pip install "pyglet<2"

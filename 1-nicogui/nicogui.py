@@ -26,7 +26,6 @@ except:
 from nicocameras import NicoCameras, image_shift_xy
 from nicodummy import DummyRobot
 from headlimiter import head_z_limits
-import serial
 
 def quit():
     os._exit(0)
@@ -320,28 +319,28 @@ try:
                                 #print('set',k,'to',values[k])
                                 robot.setAngle(k,values[k],defaultSpeed)
                             if (synchro == 1 or synchro == -1) and ks != k:
-                                print('set',ks,'to',values[k])
+                                #print('set',ks,'to',values[k])
                                 robot.setAngle(ks,values[k],defaultSpeed)
                     else:
                         i = 0 if k.startswith('Left-') else 1
                         value = int(values[k])
                         if 'zoom' in k:
-                            print('zoom camera',i,'to',value)
+                            #print('zoom camera',i,'to',value)
                             cameras.setZoom(i,value)
                             if synchro:
-                                print('zoom camera',1-i,'to',value)
+                                #print('zoom camera',1-i,'to',value)
                                 cameras.setZoom(1-i,value)
                         elif 'tilt' in k:
-                            print('tilt camera',i,'to',value)
+                            #print('tilt camera',i,'to',value)
                             cameras.setTilt(i,value)
                             if synchro:
-                                print('tilt camera',1-i,'to',value)
+                                #print('tilt camera',1-i,'to',value)
                                 cameras.setTilt(1-i,value)
                         elif 'pan' in k:
-                            print('pan camera',i,'to',value)
+                            #print('pan camera',i,'to',value)
                             cameras.setPan(i,value)
                             if synchro:
-                                print('pan camera',1-i,'to',value)
+                                #print('pan camera',1-i,'to',value)
                                 cameras.setPan(1-i,value)
                     current = k
                     newValue = None
@@ -357,10 +356,10 @@ try:
                     window[current].update(value=newValue)
                     currents = synchronized(current)
                     if synchro == 0 or synchro == 1 or currents == current:
-                        print('set',current,'to',newValue)
+                        #print('set',current,'to',newValue)
                         robot.setAngle(current,newValue,defaultSpeed)
                     if (synchro == 1 or synchro == -1) and currents != current:
-                        print('set',currents,'to',newValue)  
+                        #print('set',currents,'to',newValue)  
                         robot.setAngle(currents,newValue,defaultSpeed)
             else:
                 i = 0 if current.startswith('Left-') else 1
@@ -369,28 +368,28 @@ try:
                 if 'zoom' in current:
                     newValue = max(min(newValue,800.0),100.0)
                     if orgValue != newValue:
-                        print('zoom camera',i,'to',value)
+                        #print('zoom camera',i,'to',value)
                         cameras.setZoom(i,int(newValue))
                         if synchro:
-                            print('zoom camera',1-i,'to',value)
+                            #print('zoom camera',1-i,'to',value)
                             cameras.setZoom(1-i,int(newValue))
                         window[current].update(value=newValue)
                 elif 'tilt' in current:
                     newValue = max(min(newValue,180.0),-180.0)
                     if orgValue != newValue:
-                        print('tilt camera',i,'to',value)
+                        #print('tilt camera',i,'to',value)
                         cameras.setTilt(i,int(newValue))
                         if synchro:
-                            print('tilt camera',1-i,'to',value)
+                            #print('tilt camera',1-i,'to',value)
                             cameras.setTilt(1-i,int(newValue))
                         window[current].update(value=newValue)
                 elif 'pan' in current:
                     newValue = max(min(newValue,180.0),-180.0)
                     if orgValue != newValue:
-                        print('pan camera',i,'to',value)
+                        #print('pan camera',i,'to',value)
                         cameras.setPan(i,int(newValue))
                         if synchro:
-                            print('pan camera',1-i,'to',value)
+                            #print('pan camera',1-i,'to',value)
                             cameras.setPan(1-i,int(newValue))
                         window[current].update(value=newValue)
         elif event == 'Torque-On':
@@ -514,7 +513,7 @@ try:
             replaying = False
         elif 'Replay Recording' in event:
             replaying = True
-            print('replaying','one' if mode else 'many','...')
+            #print('replaying','one' if mode else 'many','...')
             if not torque:
                 torque = True
                 window["Torque-On"].update(value=True)
@@ -605,7 +604,7 @@ try:
                 if replay >= len(recorded):
                     replay = -1
                     replaying = False
-                    print('...replayed many')
+                    #print('...replayed many')
                 else:
                     positions = { k:position for position, k in zip(recorded[replay],concerned_dofs) }
                     if synchro == 1 or synchro == -1:
@@ -622,10 +621,10 @@ try:
                             window[k].update(value = position)
                     if mode:
                         replaying = False
-                        print('...replayed one')
+                        #print('...replayed one')
             window["Replayed"].update(value=str(replay),visible=(replay != -1))
 
-except serial.serialutil.SerialException:
+except IOError: # serial.serialutil.SerialException
     print('serial line closed')
  
 window.close()
