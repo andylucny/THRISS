@@ -230,16 +230,16 @@ def synchronizable(key,basekey):
     
 def cross(img):
     h, w = img.shape[:2]
-    cv2.line(img,(w//2,0),(w//2,h-1),(0,0,255),1)
-    cv2.line(img,(0,h//2),(w-1,h//2),(0,0,255),1)
+    cv.line(img,(w//2,0),(w//2,h-1),(0,0,255),1)
+    cv.line(img,(0,h//2),(w-1,h//2),(0,0,255),1)
     
 def crossAddons(img,d,s):
     h, w = img.shape[:2]
     dx, dy = d
     dx = int(dx//2*s)
     dy = int(dy//2*s)
-    cv2.line(img,(w//2+dx,h//3),(w//2+dx,2*h//3),(0,255,0),1)    
-    cv2.line(img,(w//3,h//2+dy),(2*w//3,h//2+dy),(0,255,0),1)
+    cv.line(img,(w//2+dx,h//3),(w//2+dx,2*h//3),(0,255,0),1)    
+    cv.line(img,(w//3,h//2+dy),(2*w//3,h//2+dy),(0,255,0),1)
 
 try:
 
@@ -453,8 +453,8 @@ try:
                     f.write(str(r)+'\n')
             window["Save Recording"].update(value='')
             if len(recorded_images) > 0:
-                out = cv2.VideoWriter()
-                out.open(filename[:-4]+'.avi',cv2.VideoWriter_fourcc('F','F','V','1'),1,recorded_images[0].shape[:2][::-1])
+                out = cv.VideoWriter()
+                out.open(filename[:-4]+'.avi',cv.VideoWriter_fourcc('F','F','V','1'),1,recorded_images[0].shape[:2][::-1])
                 for image in recorded_images:
                     out.write(image)
                 out.release()
@@ -558,14 +558,14 @@ try:
             crossAddons(left_view,dxy,-1)
             crossAddons(right_view,dxy,+1)
         if left_frame is not None and left_fps > 1: 
-            left_imgbytes = cv2.imencode(".png", cv2.resize(left_view,(320,240)))[1].tobytes()
+            left_imgbytes = cv.imencode(".png", cv.resize(left_view,(320,240)))[1].tobytes()
             window["Left-EYE"].update(data=left_imgbytes)
             window["Left-FPS"].update(value=str(left_fps)+" fps")
             if right_frame is None or right_fps <= 1:
                 window["Right-EYE"].update(data=left_imgbytes)
                 window["Right-FPS"].update(value="")
         if right_frame is not None and right_fps > 1:
-            right_imgbytes = cv2.imencode(".png", cv2.resize(right_view,(320,240)))[1].tobytes()
+            right_imgbytes = cv.imencode(".png", cv.resize(right_view,(320,240)))[1].tobytes()
             window["Right-EYE"].update(data=right_imgbytes)
             window["Right-FPS"].update(value=str(right_fps)+" fps")
         
@@ -595,7 +595,7 @@ try:
                 recorded.append([values[k] for k in dofs if concerned[k]])
                 concerned_frames = [ frame for eye, frame in zip(eyes,[left_frame,right_frame]) if concerned[eye] ]
                 if len(concerned_frames) > 0:
-                    recorded_images.append(cv2.hconcat(concerned_frames))
+                    recorded_images.append(cv.hconcat(concerned_frames))
                 window["Captured"].update(value=str(len(recorded)))
                 if beep:
                     chime.warning()

@@ -1,7 +1,7 @@
 import threading
 import time
 import numpy as np
-import cv2
+import cv2 as cv
 import os
 import requests
 import zipfile
@@ -90,13 +90,13 @@ class NicoCameras:
 
     def grabbing(self,id):
         print(f'grabbing thread {id} started')
-        #camera = cv2.VideoCapture(id,cv2.CAP_MSMF)
+        #camera = cv.VideoCapture(id,cv.CAP_MSMF)
         if platform.system() == "Windows":
-            camera = cv2.VideoCapture(id,cv2.CAP_DSHOW)
+            camera = cv.VideoCapture(id,cv.CAP_DSHOW)
             fps = 30 
-            camera.set(cv2.CAP_PROP_FPS,fps)
+            camera.set(cv.CAP_PROP_FPS,fps)
         else:
-            camera = cv2.VideoCapture(id)
+            camera = cv.VideoCapture(id)
         fps = 0
         t0 = time.time()
         while True:
@@ -110,7 +110,7 @@ class NicoCameras:
                 fps = 0
                 t0 = t1
             fps += 1
-            cv2.waitKey(1)
+            cv.waitKey(1)
 
     def read(self):
         frames = tuple([ self.frames[id] for id in self.ids ])
@@ -153,21 +153,21 @@ class NicoCameras:
 
     def check(self,left,right): #TBD: binarize by 'good features to follow'
         return False # means OK
-        #left_gray = cv2.cvtColor(left,cv2.COLOR_BGR2GRAY)
-        #right_gray = cv2.cvtColor(right,cv2.COLOR_BGR2GRAY)
+        #left_gray = cv.cvtColor(left,cv.COLOR_BGR2GRAY)
+        #right_gray = cv.cvtColor(right,cv.COLOR_BGR2GRAY)
         #left_src = 1.0 - np.float32(left_gray)/255.0
         #right_src = 1.0 - np.float32(right_gray)/255.0
-        #ret, confidence = cv2.phaseCorrelate(left_src,right_src)
+        #ret, confidence = cv.phaseCorrelate(left_src,right_src)
         #return confidence > 0.1 and ret[0] < -1.0
 
 
 """
 def image_shift_xy(left,right):
-    left_gray = cv2.cvtColor(left,cv2.COLOR_BGR2GRAY)
-    right_gray = cv2.cvtColor(right,cv2.COLOR_BGR2GRAY)
+    left_gray = cv.cvtColor(left,cv.COLOR_BGR2GRAY)
+    right_gray = cv.cvtColor(right,cv.COLOR_BGR2GRAY)
     left_src = 1.0 - np.float32(left_gray)/255.0
     right_src = 1.0 - np.float32(right_gray)/255.0
-    ret, confidence = cv2.phaseCorrelate(left_src,right_src)
+    ret, confidence = cv.phaseCorrelate(left_src,right_src)
     return ret
 """
 
@@ -182,34 +182,34 @@ def image_shift_xy(left,right):
     """
     global first
     if first:
-        cv2.imwrite('left.png',left)
-        cv2.imwrite('right.png',right)
+        cv.imwrite('left.png',left)
+        cv.imwrite('right.png',right)
         first = False
     """
     
-    left_gray = cv2.cvtColor(left, cv2.COLOR_BGR2GRAY)
-    right_gray = cv2.cvtColor(right, cv2.COLOR_BGR2GRAY)
+    left_gray = cv.cvtColor(left, cv.COLOR_BGR2GRAY)
+    right_gray = cv.cvtColor(right, cv.COLOR_BGR2GRAY)
     
-    left_points = cv2.goodFeaturesToTrack(left_gray,maxCorners=200,qualityLevel=0.01,minDistance=30,blockSize=3)
+    left_points = cv.goodFeaturesToTrack(left_gray,maxCorners=200,qualityLevel=0.01,minDistance=30,blockSize=3)
     
-    right_points, status, err = cv2.calcOpticalFlowPyrLK(left_gray, right_gray, left_points, None) 
+    right_points, status, err = cv.calcOpticalFlowPyrLK(left_gray, right_gray, left_points, None) 
 
     indices = np.where(status==1)[0]
-    warp_matrix, _ = cv2.estimateAffinePartial2D(left_points[indices], right_points[indices], method=cv2.LMEDS)
+    warp_matrix, _ = cv.estimateAffinePartial2D(left_points[indices], right_points[indices], method=cv.LMEDS)
     
     """
     left_crop = left[left.shape[0]//4:3*left.shape[0]//4,left.shape[1]//4:3*left.shape[1]//4]
     right_crop = right[right.shape[0]//4:3*right.shape[0]//4,right.shape[1]//4:3*right.shape[1]//4]
-    left_gray = cv2.cvtColor(left_crop, cv2.COLOR_BGR2GRAY)
-    right_gray = cv2.cvtColor(right_crop, cv2.COLOR_BGR2GRAY)    
+    left_gray = cv.cvtColor(left_crop, cv.COLOR_BGR2GRAY)
+    right_gray = cv.cvtColor(right_crop, cv.COLOR_BGR2GRAY)    
     warp_matrix = np.array([[1,0,0],[0,1,0]],np.float32)
     try:
         # use ECC
-        warp_mode = cv2.MOTION_AFFINE
+        warp_mode = cv.MOTION_AFFINE
         number_of_iterations = 200
         termination_eps = 1e-10
-        criteria = (cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, number_of_iterations,  termination_eps)
-        (cc, warp_matrix) = cv2.findTransformECC(left_gray, left_gray, warp_matrix, warp_mode, criteria, inputMask=None, gaussFiltSize=5)
+        criteria = (cv.TERM_CRITERIA_EPS | cv.TERM_CRITERIA_COUNT, number_of_iterations,  termination_eps)
+        (cc, warp_matrix) = cv.findTransformECC(left_gray, left_gray, warp_matrix, warp_mode, criteria, inputMask=None, gaussFiltSize=5)
     except Exception as ee:
         # print('ECC diverged:', ee)
         pass
