@@ -23,9 +23,12 @@ time.sleep(2)
 
 postures = load_movement('movement.txt')
 
-move_to_posture(postures[0])
-time.sleep(2)
-
+#move_to_posture(postures[0])
+#time.sleep(2)
 #play_movement(postures)
+
+# len(postures) == 7
+durations = [2, 1,  0.58, 0.9, 0.5, 0.8, 1] # [s]
+play_movement(postures, durations)
 
 # quit()
