@@ -172,4 +172,6 @@ clip_image_model_vitb32.onnx
 clip_text_model_vitb32.onnx
 bpe_simple_vocab_16e6.txt.gz
 dino_deits8-224-final.onnx
-dino_deits8-480-final.onnx
+
+# output images (input images must be *.jpg)
+*.png
