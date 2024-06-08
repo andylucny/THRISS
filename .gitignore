@@ -175,3 +175,6 @@ dino_deits8-224-final.onnx
 
 # output images (input images must be *.jpg)
 *.png
+
+# output data
+keys.npy

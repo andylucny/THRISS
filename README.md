@@ -9,8 +9,12 @@ We suppose Python 3.7, 3.8, 3.9, 3.10 or 3.11 is installed (tested on 3.9)
 
 ### Windows
 
+If you have not installed Visual Studio 2019 or newer, 
+install the lastest Visual Studio Redistributables from
+https://aka.ms/vs/17/release/vc_redist.x64.exe
+
 From https://github.com/andylucny/THRISS.git download zip and unpack it into c:\
-so you have this readme in C:\THRISS\
+so you have this readme in, e.g., C:\THRISS\
 
 start cmd
 
