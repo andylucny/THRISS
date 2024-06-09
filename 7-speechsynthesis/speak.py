@@ -28,7 +28,7 @@ def speak(text):
         except ValueError:
             speaker = 0
     
-    print('speaker:',speaker, voices[speaker].name)
+    #print('speaker:',speaker, voices[speaker].name)
     engine.setProperty('voice', voices[speaker].id)
     engine.say(text)
     print('speaking on <'+text+'>')
