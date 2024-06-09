@@ -37,7 +37,8 @@ or
 
 > (thriss)> pip install onnxruntime      (if CUDA is not available)    
 
-> (thriss)> pip install ftfy
+> (thriss)> pip install ftfy<br>
+> (thriss)> pip install regex
 
 ### Linux (Ubuntu)
 
@@ -61,7 +62,8 @@ or
  
 > (thriss)$ pip install onnxruntime      (if CUDA is not available) 
 
-> (thriss)$ pip install ftfy
+> (thriss)$ pip install ftfy<br>
+> (thriss)$ pip install regex
 
 ## How to use
 
