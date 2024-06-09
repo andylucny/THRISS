@@ -80,6 +80,7 @@ if __name__ == "__main__":
         for text, probability in zip(texts, probabilities):
             print(f"{text}: {probability:.3f}")
 
+        print()
 
 """
 a mandarine: 0.055

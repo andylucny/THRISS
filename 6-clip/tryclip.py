@@ -45,7 +45,6 @@ while True:
         index = np.argmax(probabilities)
         text = f"{index:1d}, {probabilities[index]:1.2f}%"
         if probabilities[index] > threshold:
-            print(text)
             color = (0, 0, 255)
         else:
             color = (80, 80, 80)
@@ -59,7 +58,7 @@ while True:
         break
     elif key == ord('k'):
         keys = np.array(query) if keys is None else np.vstack([keys,query])
-        np.savetxt('keys.npy')
+        np.savetxt('keys.npy',keys)
 
 cv.destroyAllWindows()
 camera_agent.stop()
