@@ -1,13 +1,8 @@
-#how to install:
-#pip install pipwin
-#pipwin install pyaudio # wait on hang ...
-#pip install SpeechRecognition
-
 import tkinter as tk
 import threading
 import time
 import speech_recognition as sr
-from agentspace import Space
+from agentspace import space
 from sender_client import SenderAgent
 
 class App():
@@ -45,7 +40,7 @@ class App():
                 try:
                     text = self.r.recognize_google(audio,language="en")
                     self.txt.insert(tk.INSERT,text)
-                    Space.write('recognized',text)
+                    space['recognized'] = text
                     #print(text)
                 except:
                     self.txt.insert(tk.INSERT,'???')

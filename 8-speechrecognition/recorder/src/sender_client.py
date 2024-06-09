@@ -1,6 +1,6 @@
 import socket
 import re
-from agentspace import Agent,Space
+from agentspace import Agent, space
 
 class SenderAgent(Agent):
 
@@ -28,9 +28,9 @@ class SenderAgent(Agent):
         except ConnectionRefusedError:
             print('router is not running')
             self.stop()
-        self.attach_trigger(self.name)
+        space.attach_trigger(self.name,self)
         self.putline('connect')
   
     def senseSelectAct(self):
-        text = Space.read(self.name,'')
+        text = space(default='')[self.name]
         self.putline(text)
