@@ -38,7 +38,13 @@ or
 > (thriss)> pip install onnxruntime      (if CUDA is not available)    
 
 > (thriss)> pip install ftfy<br>
-> (thriss)> pip install regex
+> (thriss)> pip install regex<br>
+> (thriss)> pip install pyttsx3
+
+if you like launching the recorder application from sources (instead of binaries), install also:
+
+> (thriss)> install pyaudio<br>
+> (thriss)> pip install SpeechRecognition
 
 ### Linux (Ubuntu)
 
@@ -63,7 +69,8 @@ or
 > (thriss)$ pip install onnxruntime      (if CUDA is not available) 
 
 > (thriss)$ pip install ftfy<br>
-> (thriss)$ pip install regex
+> (thriss)$ pip install regex<br>
+> (thriss)$ pip install pyttsx3
 
 ## How to use
 
