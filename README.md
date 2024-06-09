@@ -69,7 +69,9 @@ or
 > (thriss)$ pip install onnxruntime      (if CUDA is not available) 
 
 > (thriss)$ pip install ftfy<br>
-> (thriss)$ pip install regex<br>
+> (thriss)$ pip install regex
+
+> (thriss)$ sudo apt install espeak<br>
 > (thriss)$ pip install pyttsx3
 
 ## How to use
