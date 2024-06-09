@@ -11,7 +11,7 @@ def quit():
 # Initializing video capture agent
 class CameraAgent(Agent):
     def init(self):
-        camera = cv.VideoCapture(0,cv.CAP_DSHOW)
+        camera = cv.VideoCapture(0) # ,cv.CAP_DSHOW
         while True:
             _, frame = camera.read()
             space["bgr"] = frame
@@ -19,8 +19,8 @@ class CameraAgent(Agent):
                 break
         
 camera_agent = CameraAgent()
-while space["bgr"] is None:
-    time.sleep(0.25)
+while space["bgr"] is None: 
+    time.sleep(0.25) # wait for camera
 
 # Kalman filtering initialization
 last_ticks = cv.getTickCount()    
