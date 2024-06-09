@@ -41,7 +41,7 @@ import platform
 import sys
 if platform.system() == "Windows":
     if sys.flags.interactive: 
-        print("press cltr-break or ctrl-c to stop")
+        print("press cltr-break (ctrl-fn-b) or ctrl-c to stop")
     else:
         print("press ctrl-break to stop")
 else:
