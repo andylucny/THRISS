@@ -5,7 +5,10 @@ materials for the Trustworthy Human-Robot Interaction Summer School, WorkShop1 (
 
 We suppose 64-bit operating system, Windows or Linux Ubuntu (or similar POSIX platform).
 
-We suppose Python 3.7, 3.8, 3.9, 3.10 or 3.11 is installed (tested on 3.9)
+We suppose Python 3.7, 3.8, 3.9, 3.10 or 3.11 is installed (we have tested on 3.9) and
+the paths like C:\Python39 and C:\Python39\Scripts are in PATH
+
+Thus you can open cmd or Terminal and run python or python3 
 
 ### Windows
 

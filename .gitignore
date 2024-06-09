@@ -178,3 +178,6 @@ dino_deits8-224-final.onnx
 
 # output data
 keys.npy
+
+# recorder on windows
+binaries
