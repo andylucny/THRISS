@@ -4,7 +4,7 @@ import os
 import io
 import signal
 import PySimpleGUI as sg
-import cv2
+import cv2 as cv
 import numpy as np
 import chime ; chime.theme('zelda')
 try:
