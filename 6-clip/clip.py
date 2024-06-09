@@ -24,8 +24,9 @@ def download_clip():
 download_clip()
 
 tokenizer = Tokenizer('bpe_simple_vocab_16e6.txt.gz')
-image_model = ort.InferenceSession('clip_image_model_vitb32.onnx', providers=['CPUExecutionProvider'])
-text_model = ort.InferenceSession('clip_text_model_vitb32.onnx', providers=['CPUExecutionProvider'])
+providers = ['CPUExecutionProvider']
+image_model = ort.InferenceSession('clip_image_model_vitb32.onnx', providers=providers)
+text_model = ort.InferenceSession('clip_text_model_vitb32.onnx', providers=providers)
 
 def normalize(embeddings):
     return embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)

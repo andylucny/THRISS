@@ -11,7 +11,7 @@ def quit():
 # Initializing video capture agent
 class CameraAgent(Agent):
     def init(self):
-        camera = cv.VideoCapture(0,cv.CAP_DSHOW)
+        camera = cv.VideoCapture(0) # ,cv.CAP_DSHOW
         while True:
             _, frame = camera.read()
             space["bgr"] = frame
@@ -20,7 +20,7 @@ class CameraAgent(Agent):
         
 camera_agent = CameraAgent()
 while space["bgr"] is None:
-    time.sleep(0.25)
+    time.sleep(0.25) # wait for camera
 
 if os.path.exists('keys.npy'):
     keys = np.loadtxt('keys.npy')
