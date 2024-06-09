@@ -43,7 +43,7 @@ or
 
 if you like launching the recorder application from sources (instead of binaries), install also:
 
-> (thriss)> install pyaudio<br>
+> (thriss)> pip install pyaudio<br>
 > (thriss)> pip install SpeechRecognition
 
 ### Linux (Ubuntu)
@@ -73,6 +73,10 @@ or
 
 > (thriss)$ sudo apt install espeak<br>
 > (thriss)$ pip install pyttsx3
+
+> (thriss)$ sudo apt install portaudio19-dev python3-pyaudio<br>
+> (thriss)$ pip install pyaudio<br>
+> (thriss)$ pip install SpeechRecognition
 
 ## How to use
 

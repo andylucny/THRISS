@@ -36,8 +36,8 @@ if platform.system() == "Windows":
     download_recorder()
     print('use recorder.bat')
 else:
-    os.chmod('recorder.sh', 0o777)
-    print('use ./recorder.sh')
+    print('apply command: chmod 0777 recorder.sh')
+    print('then, use ./recorder.sh')
 
 class ListenerAgent(Agent):
 
