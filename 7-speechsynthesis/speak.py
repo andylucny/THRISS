@@ -24,9 +24,12 @@ def speak(text):
         speaker = voice_names.index('Microsoft Zira Desktop - English (United States)')
     except ValueError:
         try:
-            speaker = voice_names.index('english-us')
+            speaker = voice_names.index('Microsoft David Desktop - English (United States)')
         except ValueError:
-            speaker = 0
+            try:
+                speaker = voice_names.index('english-us')
+            except ValueError:
+                speaker = 0
     
     #print('speaker:',speaker, voices[speaker].name)
     engine.setProperty('voice', voices[speaker].id)
