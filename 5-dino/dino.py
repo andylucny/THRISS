@@ -17,7 +17,7 @@ def download_DinoViT_model():
 
 download_DinoViT_model()
 
-session = ort.InferenceSession("dino_deits8-224-final.onnx", providers=['CUDAExecutionProvider'])
+session = ort.InferenceSession("dino_deits8-224-final.onnx", providers=['CUDAExecutionProvider','CPUExecutionProvider'])
 input_names = [input.name for input in session.get_inputs()] 
 output_names = [output.name for output in session.get_outputs()] 
 #print(input_names,'->',output_names)
