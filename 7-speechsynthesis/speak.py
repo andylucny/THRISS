@@ -5,9 +5,7 @@ def speak(text):
     engine = pyttsx3.init()
     engine.setProperty('rate', 150)
     voices = engine.getProperty('voices')
-    the_best_robotic_english_voice_index = 2 # 0 .. David, 1 .. Markus, 2 .. Hazel (Windows)
-    speaker = min(the_best_robotic_english_voice_index,len(voices)-1) 
-    if speaker == -1:
+    if len(voices) == 0:
         import platform 
         if platform.system() == "Windows":
             print("run Registy Editor (regedit) and")
@@ -18,6 +16,19 @@ def speak(text):
             print("install:")
             print("$ sudo apt-get install espeak -y")
         os._exit(0)
+        
+    voice_names = [ voice.name for voice in voices ] 
+    #print(voice_names)
+    
+    try:
+        the_best_robotic_english_voice_index = voice_names.index('Microsoft Zira Desktop - English (United States)')
+    except ValueError:
+        try:
+            the_best_robotic_english_voice_index = voice_names.index('english-us')
+        except ValueError:
+            the_best_robotic_english_voice_index = 0
+    
+    speaker = min(the_best_robotic_english_voice_index,len(voices)-1) 
     engine.setProperty('voice', voices[speaker].id)
     engine.say(text)
     print('speaking on <'+text+'>')
