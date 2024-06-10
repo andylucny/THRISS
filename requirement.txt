@@ -8,4 +8,9 @@ pip install "pyglet<2"
 pip install onnxruntime-gpu 
 # or pip install onnxruntime
 pip install ftfy
+pip install regex
+pip install pyttsx3
 
+# optional
+pip install pyaudio
+pip install SpeechRecognition
