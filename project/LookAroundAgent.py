@@ -2,7 +2,7 @@ import numpy as np
 import time
 from agentspace import Agent, space
 
-from nicomover import setAngle, getAngle, enableTorque, release
+from nicomover import setAngle, getAngle, enableTorque, release, simulated
 from headlimiter import head_z_limits
 
 class LookAroundAgent(Agent):
@@ -58,12 +58,18 @@ class LookAroundAgent(Agent):
             delta_degrees_x = -head_x
             #print("RESET X")
         else:
-            delta_degrees_x = np.arctan2((0.5-x)*np.tan(20*np.pi/180),0.5)*180/np.pi
+            if simulated:
+                delta_degrees_x = 30*(0.5-x) - head_x
+            else:
+                delta_degrees_x = np.arctan2((0.5-x)*np.tan(20*np.pi/180),0.5)*180/np.pi
         if reset_y:
             delta_degrees_y = -head_y - 25
             #print("RESET Y")
         else:
-            delta_degrees_y = np.arctan2((0.5-y)*np.tan(20*np.pi/180),0.5)*180/np.pi
+            if simulated:
+                delta_degrees_y = 30*(0.5-y) - head_y
+            else:
+                delta_degrees_y = np.arctan2((0.5-y)*np.tan(20*np.pi/180),0.5)*180/np.pi
         
         if head_y + delta_degrees_y <= -limit_x+1:
             delta_degrees_y = 0.0

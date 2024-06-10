@@ -19,8 +19,10 @@ try:
     download_config(motorConfig, "http://www.agentspace.org/download/")
     
     robot = Motion(motorConfig=motorConfig)
+    simulated = False
     print('robot ready')
 except:
+    simulated = True
     from nicodummy import DummyRobot
     robot = DummyRobot()
     print('simulator ready')

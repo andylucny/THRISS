@@ -16,7 +16,7 @@ class SpeakerAgent(Agent):
     def senseSelectAct(self):
         _, text = self.triggered()
         speak(text)
- 
+
 if __name__ == "__main__":  
     text = sys.argv[1] if len(sys.argv) > 1 else "hallo"
     speak(text)
