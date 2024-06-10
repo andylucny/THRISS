@@ -11,7 +11,7 @@ while True:
     if not hasFrame:
         break
     cv.imshow('camera',frame)
-    key = cv.waitKey(10)
+    key = cv.waitKey(10) & 0xff
     if key == 27:
         break
     elif key == ord('s'): # save the image
