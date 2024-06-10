@@ -59,7 +59,7 @@ class LookAroundAgent(Agent):
             #print("RESET X")
         else:
             if simulated:
-                delta_degrees_x = 30*(0.5-x) - head_x
+                delta_degrees_x = 2*30*(0.5-x) - head_x
             else:
                 delta_degrees_x = np.arctan2((0.5-x)*np.tan(20*np.pi/180),0.5)*180/np.pi
         if reset_y:
@@ -67,7 +67,7 @@ class LookAroundAgent(Agent):
             #print("RESET Y")
         else:
             if simulated:
-                delta_degrees_y = 30*(0.5-y) - head_y
+                delta_degrees_y = 2*30*(0.5-y) - head_y
             else:
                 delta_degrees_y = np.arctan2((0.5-y)*np.tan(20*np.pi/180),0.5)*180/np.pi
         
