@@ -1,6 +1,8 @@
 import re
 import os
 import signal
+import numpy as np
+import cv2 as cv
 from agentspace import Agent, space
 from receiver import ReceiverAgent
 
