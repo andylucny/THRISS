@@ -101,6 +101,7 @@ Let's start by familiarizing ourselves with the components available to you. We'
 ### 1-nicogui
 
 Learn the NICO robot's movement capabilities. NICO has 22 degrees of freedom: 2 in the head, 4 in the arm, 2 in the wrist, and 4 in the fingers. Launch: "python nicogui.py" and choose a posture, like "pointing up." Use NICOgui sliders to set it up. Record the pose by the button "Start"; follow the number of frames displayed by "Capture." Record a few other postures using the button "Next." Then, replay the recorded data by clicking Replay. Change "Pose" to "Movement," set up a suitable period, and Replay again with one click. Finally, save the movement on the hard disk by "Save."
+(The simulator can be controlled by mouse and the ctrl key.)
 
 ### 2-nicomover
 
