@@ -466,8 +466,20 @@ try:
             with open(filename, 'r') as f:
                 lines = f.readlines()
                 concerned_dofs = eval(lines[0])
+                dids = []
+                try:
+                    dids.append(concerned_dofs.index('timestamp'))
+                except ValueError:
+                    pass
+                try:
+                    dids.append(concerned_dofs.index('duration'))
+                except ValueError:
+                    pass
+                dids.sort()
                 for line in lines[1:]:
                     r = eval(line[:-1])
+                    for did in dids[::-1]:
+                        del r[did]
                     recorded.append(r)
                 for k in dofs:
                     concerned[k] = False

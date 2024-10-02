@@ -41,14 +41,14 @@ class NicoSimulator:
             value /= 2.0
         if key == 'r_wrist_x':
             if value >= 0:
-                value *= 30.0/180.0
+                value *= -30.0/180.0
             else:
-                value *= 50.0/180.0
+                value *= -50.0/180.0
         if key == 'l_wrist_x':
             if value >= 0:
-                value *= 50.0/180.0
+                value *= -50.0/180.0
             else:
-                value *= 30.0/180.0
+                value *= -30.0/180.0
         if key == 'r_indexfinger_x' or key == 'r_middlefingers_x':
             value = - (value+180) / 2.0
         if key == 'l_indexfinger_x' or key == 'l_middlefingers_x':
