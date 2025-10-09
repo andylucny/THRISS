@@ -25,7 +25,7 @@ start cmd
 > \> mkvirtualenv thriss
 
 > (thriss)> pip install requests<br>
-> (thriss)> pip install PySimpleGUI==4.60.5<br>
+> (thriss)> pip install PySimpleGUI-4-foss<br>
 > (thriss)> pip install opencv-contrib-python<br>
 > (thriss)> pip install chime<br>
 > (thriss)> pip install yourdfpy<br>
@@ -55,7 +55,7 @@ if you like launching the recorder application from sources (instead of binaries
 > (thriss)$ sudo apt-get install python3-tk 
 
 > (thriss)$ pip install requests  <br>
-> (thriss)$ pip install PySimpleGUI==4.60.5 <br>
+> (thriss)$ pip install PySimpleGUI-4-foss <br>
 > (thriss)$ pip install opencv-contrib-python <br>
 > (thriss)$ pip install chime <br>
 > (thriss)$ pip install "pyglet<2" <br>
